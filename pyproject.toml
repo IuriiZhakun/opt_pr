@@ -1,28 +1,33 @@
-[tool.poetry]
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
 name = "opt_pr"
 version = "0.1.0"
-description = "American options on equity index futures: CRR+Richardson, LSM, and QuantLib BAW (calendar-aware)"
-license = "BSD-3-Clause"
+description = "Options pricing & risk toolkit: American on futures (CRR+Richardson, LSM) + QuantLib BAW, calendar-aware"
 readme = "README.md"
-authors = ["Iurii Zhakun <yurij.zhacun@gmail.com>"]
-packages = [{ include = "opt_pr", from = "src" }]
+requires-python = ">=3.11,<3.12"
+license = { text = "BSD-3-Clause" }
+authors = [
+  { name = "Iurii Zhakun", email = "yurij.zhacun@gmail.com" }
+]
+# PEP 621 dependencies
+dependencies = [
+  "numpy>=1.26",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-numpy = ">=1.26"
-# Optional extras below; install with: poetry install --with plots,ql
+[project.optional-dependencies]
+plots = ["plotly>=5.0"]
+ql    = ["QuantLib==1.29"]
+tf    = ["tensorflow>=2.15"]
+
+# Poetry-specific configuration (src/ layout)
+[tool.poetry]
+packages = [{ include = "opt_pr", from = "src" }]
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.0"
 ruff = ">=0.5"
 black = ">=24.0"
-
-[tool.poetry.extras]
-plots = ["plotly>=5.0"]
-ql = ["QuantLib==1.29"]
-tf = ["tensorflow>=2.15"]
-
-[build-system]
-requires = ["poetry-core>=1.8.0"]
-build-backend = "poetry.core.masonry.api"
 
