@@ -1,0 +1,32 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.cache/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+*.dist-info/
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
+
+# Virtual envs
+.venv/
+venv/
+.env
+
+# Poetry
+# (Keep poetry.lock if you want reproducible dev envs; I usually commit it.)
+#poetry.lock
+
+# Editors
+.vscode/
+.idea/
+
